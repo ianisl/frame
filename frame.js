@@ -3,12 +3,13 @@
     // global object exported by the module
     var frame = {};
 
-    frame.createRunner = function(computeFrame) {
+    frame.createRunner = function(computeFrame, interval) {
 
         // Private variables
         var timer;
         var lastFrameDate;
-        run = false;
+        var run = false;
+        interval = interval || 16; // 16ms = 1000ms / 60fs : a standard framerate in computer rendering
 
         // new object
         var runner = {
@@ -24,6 +25,9 @@
                     run = false;
                     stop();
                 }
+            },
+            get timer() {
+            	return timer;
             }
         };
 
@@ -33,7 +37,8 @@
                 var deltaT = now - lastFrameDate;
                 computeFrame(deltaT);
                 lastFrameDate = now;
-            }, 16); // 16ms = 1000ms / 60fs : default framerate in computer rendering
+            }, interval);
+            var debug = 0;
         }
 
         function stop() {
