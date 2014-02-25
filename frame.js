@@ -32,7 +32,7 @@
         };
 
         function start() {
-            timer = window.setInterval(function() {
+            timer = setInterval(function() {
                 var now = +new Date;
                 var deltaT = now - lastFrameDate;
                 computeFrame(deltaT);
@@ -42,7 +42,7 @@
         }
 
         function stop() {
-            window.clearInterval(timer);
+            clearInterval(timer);
         }
 
         // Return the new object
