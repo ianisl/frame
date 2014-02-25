@@ -9,10 +9,10 @@ Usage
 The module exports a `frame` object. Create a new `runner` by calling `createRunner`.
 
 ```js
-var runner = frame.createRunner(computeFrame);
+var runner = frame.createRunner(computeFrame, intervalBetweenFramesInMs);
 ```
 
-The computeFrame function will be called at each frame. It is passed the amount of time (in ms) since last frame.
+The computeFrame function will be called at each frame. It is passed the actual amount of time (in ms) since last frame.
 
 ```js
 var computeFrame = function(deltaT) {
